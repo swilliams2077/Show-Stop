@@ -122,15 +122,15 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 
-database.ref().on("child_added", function(retrieveValue) {
+// database.ref().on("child_added", function(retrieveValue) {
 
-  var MovieName1 = [retrieveValue.val().MovieName];
+//   var MovieName1 = [retrieveValue.val().MovieName];
  
-  console.log(MovieName1);
+//   console.log(MovieName1);
   
   
 
-   })
+   //})
 
    var movieSearchArray= []
 database.ref().on('value', function(snapshot) {
@@ -146,7 +146,19 @@ for (var i=0; i<movieSearchArray.length; i++) {
 
 firebase.database().ref().on("value",function(snapshot){
     $("#movieName").html(snapshot.val().name);
-})
+
+});
+
+    
+$('#my_form').keydown(function() {
+    var key = e.which;
+    if (key == 13) {
+    // As ASCII code for ENTER key is "13"
+    $('#my_form').submit(); // Submit form code
+    }
+    });
+    
+
 
 //add option to datalist using jquery
 
