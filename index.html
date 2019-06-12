@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>The Show Stoppers Project</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!------Jquery-->
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body background="assets/images/prism.png">
@@ -35,6 +37,11 @@
                                   </form>
 
                             
+                    <input type="text" class="form-control" id="search-name-input" placeholder="Your Favorite Show" aria-label="User's Favorite Show" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            
+                            <button class="btn btn-outline-info" type="button" id="search-submit1">Search1</button>
+
                         </div>
                 </div>
             </div>
@@ -70,7 +77,7 @@
                     <div class="card">
                         <div class="card-header text-center">Available Platforms</div>
                             <div class="card-body">
-    
+                                    <div id="player"></div>
                             </div>
                     </div>
                 </div>
@@ -80,5 +87,9 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
     <script type="text/javascript" src="assets/search-history2.js"></script>
+    <!----trailer link-->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
