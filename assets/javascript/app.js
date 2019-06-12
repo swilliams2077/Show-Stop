@@ -1,14 +1,8 @@
-// capture click function
-
-  
-    
-
-
-$("#search-submit").on('click', function (event) {
-    
+$("#search-submit").on('click', function (event) {    
      event.preventDefault();
-    
+        $("#movieList").html("");
         var movie = $("#search-name-input").val();
+        $("#search-name-input").val("");
   
         var queryURL = "https://www.omdbapi.com/?s=" + movie + "&type=&r=json&y=&plot=short&apikey=7cb1822e";
         $.ajax({
@@ -16,18 +10,14 @@ $("#search-submit").on('click', function (event) {
           method: "GET"
         }).then(function (response) {
           console.log(response);
-          
+
           var search = response.search;
           var movielist = $("#movieList")
           for (var m in response.Search) {
             var movie = response.Search[m];
-  
+
          mainTitle = response.Search[m].Title;
-            
-            
-            
-            //display poster with text fixed to right side.
-            //poster to right. text to left. 
+
             var posterimg = $("<img data-movie-title='" + movie.Title + "' onclick='imagClick(event)' src='" + movie.Poster + "' width=100>");
             var li = $('<li class="list-group-item">');
             
@@ -38,17 +28,14 @@ $("#search-submit").on('click', function (event) {
           }
   
         });
-  
-    
-  
-  
 });
-
 function imagClick(event){
       console.log($(event.target).attr('data-movie-title'));
-     
+
+      $("#poster").html("")
+
       var movie = $(event.target).attr('data-movie-title');
-  
+
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&type=&r=json&y=&plot=short&apikey=7cb1822e";
     var movRow = $("<div>");
     movRow.addClass("row");
@@ -71,7 +58,7 @@ function imagClick(event){
       var starinner = $("<div>")
       starinner.addClass("star-inner");
       RatingCol.append(starinner);
-  
+
       var PlotCol = $("<div>");
       PlotCol.addClass("SummaryDiv");
       movCol2.append(titleCol, RatingCol, PlotCol);
@@ -79,46 +66,36 @@ function imagClick(event){
       PlotCol.append("Summary:" + response.Plot + "<br>");
       movCol1.append("<img src='" + response.Poster + "' width='200'>");
       RatingCol.append("Rating:" + parseInt(response.imdbRating) + "<br>");
-      
-  
-      //start of calculating the rating
+
       const starTotal = 10;
       const ratings = response.imdbRating;
-  
+
       if (ratings !== null) {
 
   }
 
-  
       $("#poster").append(movRow);
       const starPercentage = (ratings / starTotal) * 100;
-      
-      
+
       const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)-10}%`;
-      
-  
+
       console.log("WE'RE IN RATINGS")
-  
+
       console.log($(".star-inner"));
       $(".star-inner").css("width", starPercentageRounded);
       console.log(starPercentageRounded);
-  
+
       });
-    $("#poster").html("")
-   $("#movieList").html("");
-   
-   
-  
-  
- 
-    //////////player//////
+    
+    
+
     return gapi.client.youtube.search.list({
         "part": "snippet",
         "type" : "video",
         "maxResults": 1,
         "q": movie +"official trailer",
         "videoDuration": "any"
-        
+
       })
       .then(function(response) {
           // Handle the results here (response.result has the parsed body).
@@ -133,17 +110,16 @@ function imagClick(event){
           videoLink = response.result.items[0].id.videoId; 
           loadVideo();
       })
-      
-      
+
       .catch(function(err) { 
           console.error("Execute error", err); 
       })
-  
+
 }
 
 ///////////////////////////////Trialer///////////////////coding start here
 var videoLink;
-  
+
 //  <--scrit for youtube API-->//
   window.onload = function loadClient() {
     gapi.client.setApiKey("AIzaSyD7MTYHpFuE9uNjCZWB3uFE5o6EMc85an8");
@@ -152,8 +128,6 @@ var videoLink;
               function(err) { console.error("Error loading GAPI client for API", err); });
   };
 
-     
-      
 gapi.load("client");
 // end of youtube API script //
 
