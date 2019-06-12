@@ -25,14 +25,10 @@ $("#search-submit").on('click', function (event) {
          mainTitle = response.Search[m].Title;
             
             
-            
-            //display poster with text fixed to right side.
-            //poster to right. text to left. 
-            var posterimg = $("<img data-movie-title='" + movie.Title + "' onclick='imagClick(event)' src='" + movie.Poster + "' width=100>");
             var li = $('<li class="list-group-item">');
-            
-            li.append(posterimg);
             li.append(movie.Title);
+            var posterimg = $("<img data-movie-title='" + movie.Title + "' onclick='imagClick(event)' src='" + movie.Poster + "' width=100>");
+            li.append(posterimg);
             movielist.append(li);
             console.log(movie)
           }
