@@ -13,27 +13,40 @@
 <body background="assets/images/prism.png">
     <br>
     <div class="container">
-
         <div class="jumbotron bg-info text-white">
             <h1 class="text-center">Show Stop</h1>
             <h3 class="text-center">The Quickest Way To Find Your Favorite Movies & Shows</h3>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="input-group">
+                        <form action="/action_page.php" method="get">
                     <input type="text" class="form-control" id="search-name-input" placeholder="Your Favorite Show" aria-label="User's Favorite Show" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-info" type="button" id="search-submit">Search</button>
+
+                                
+                                    
+                                    <datalist id="history">
+                                      <option value="MovieName1"> 
+                                      <!-- <option value="Firefox">
+                                      <option value="Chrome">
+                                      <option value="Opera">
+                                      <option value="Safari"> --> 
+                                    </datalist>
+                                     <button class="btn btn-outline-info" type="button" id="search-submit">Search</button>
+                                  </form>
+
+                            
+                    <input type="text" class="form-control" id="search-name-input" placeholder="Your Favorite Show" aria-label="User's Favorite Show" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            
                             <button class="btn btn-outline-info" type="button" id="search-submit1">Search1</button>
 
                         </div>
                 </div>
             </div>
         </div>
-
         <br>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -41,7 +54,7 @@
                         <div class="card-body">
                             
                              <div class="row">
-                                 <div class ="col-md-3">
+                                 <div class ="col-xs-3">
                                     <div id="movieList"></div>
                                  </div>
                                  <div class="col-md-9" >
@@ -50,10 +63,11 @@
                                 
                                 </div>
                              </div>
-                             
+                                    <div class="col-xs-9">
+
+                                    <div id ="poster"></div>
                                     
-                                    
-                                
+                        
                                     
                             </div>
                             
@@ -62,9 +76,7 @@
                 </div>
             </div>
         </div>
-
         <br>
-
         <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -75,11 +87,11 @@
                     </div>
                 </div>
             </div>
-
     </div>
     <!----Firebase link-->
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js"></script>
+    <script type="text/javascript" src="assets/search-history2.js"></script>
     <!----trailer link-->
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
